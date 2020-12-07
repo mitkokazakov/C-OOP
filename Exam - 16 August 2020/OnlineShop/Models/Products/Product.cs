@@ -13,9 +13,13 @@ namespace OnlineShop.Models.Products
         private decimal price;
         private double overallPerformance;
 
-        public Product()
+        public Product(int id, string manufacturer, string model, decimal price, double overallPerformance)
         {
-
+            this.Id = id;
+            this.Manufacturer = manufacturer;
+            this.Model = model;
+            this.Price = price;
+            this.OverallPerformance = overallPerformance;
         }
         public int Id
         {
@@ -103,6 +107,11 @@ namespace OnlineShop.Models.Products
 
                 this.overallPerformance = value;
             }
+        }
+
+        public override string ToString()
+        {
+            return $"Overall Performance: {this.OverallPerformance}. Price: {this.Price} - {this.GetType().Name}: {this.Manufacturer} {model} (Id: {this.Id})";
         }
     }
 
