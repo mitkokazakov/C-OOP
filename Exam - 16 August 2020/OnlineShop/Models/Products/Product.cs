@@ -98,7 +98,7 @@ namespace OnlineShop.Models.Products
                 return this.overallPerformance;
             }
 
-            private set
+            protected set
             {
                 if (value <= 0)
                 {
