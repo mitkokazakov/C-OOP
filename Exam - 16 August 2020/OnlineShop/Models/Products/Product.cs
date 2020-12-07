@@ -72,7 +72,7 @@ namespace OnlineShop.Models.Products
                 this.model = value;
             }
         }
-        public decimal Price
+        public virtual decimal Price
         {
 
             get
@@ -91,7 +91,7 @@ namespace OnlineShop.Models.Products
             }
         }
 
-        public double OverallPerformance
+        public virtual double OverallPerformance
         {
             get
             {
