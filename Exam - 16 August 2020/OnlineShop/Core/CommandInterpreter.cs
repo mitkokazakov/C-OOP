@@ -7,6 +7,11 @@ namespace OnlineShop.Core
 {
     public class CommandInterpreter : ICommandInterpreter
     {
+        private IController controller;
+        public CommandInterpreter()
+        {
+            this.controller = new Controller();
+        }
         public string ExecuteCommand(string[] data, IController controller)
         {
             string command = data[0];
@@ -57,7 +62,7 @@ namespace OnlineShop.Core
         {
             int id = int.Parse(data[0]);
 
-            string msg = controller.GetComputerData(id);
+            string msg = this.controller.GetComputerData(id);
             return msg;
         }
 
@@ -65,14 +70,14 @@ namespace OnlineShop.Core
         {
             decimal price = decimal.Parse(data[0]);
 
-            return controller.BuyBest(price);
+            return this.controller.BuyBest(price);
         }
 
         private string BuyComputer(string[] data, IController controller)
         {
             int id = int.Parse(data[0]);
 
-            return controller.BuyComputer(id);
+            return this.controller.BuyComputer(id);
         }
 
         private string RemoveComponent(string[] data, IController controller)
@@ -80,7 +85,7 @@ namespace OnlineShop.Core
             string productType = data[0];
             int computerId = int.Parse(data[1]);
 
-            return controller.RemoveComponent(productType, computerId);
+            return this.controller.RemoveComponent(productType, computerId);
         }
 
         private string AddComponent(string[] data, IController controller)
@@ -94,7 +99,7 @@ namespace OnlineShop.Core
             double overallPerformance = double.Parse(data[6]);
             int generation = int.Parse(data[7]);
 
-            return controller.AddComponent(computerId, id, productType, manufacturer, model, price,
+            return this.controller.AddComponent(computerId, id, productType, manufacturer, model, price,
                 overallPerformance, generation);
         }
 
@@ -103,7 +108,7 @@ namespace OnlineShop.Core
             string productType = data[0];
             int computerId = int.Parse(data[1]);
 
-            return controller.RemovePeripheral(productType, computerId);
+            return this.controller.RemovePeripheral(productType, computerId);
         }
 
         private string AddPeripheral(string[] data, IController controller)
@@ -117,7 +122,7 @@ namespace OnlineShop.Core
             double overallPerformance = double.Parse(data[6]);
             string connectionType = data[7];
 
-            return controller.AddPeripheral(computerId, id, productType, manufacturer, model, price,
+            return this.controller.AddPeripheral(computerId, id, productType, manufacturer, model, price,
                 overallPerformance, connectionType);
         }
 
@@ -129,7 +134,7 @@ namespace OnlineShop.Core
             string model = data[3];
             decimal price = decimal.Parse(data[4]);
 
-            return controller.AddComputer(computerType, id, manufacturer, model, price);
+            return this.controller.AddComputer(computerType, id, manufacturer, model, price);
         }
     }
 }
