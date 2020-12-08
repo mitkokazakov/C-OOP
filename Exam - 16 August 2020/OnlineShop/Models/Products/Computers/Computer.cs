@@ -81,17 +81,28 @@ namespace OnlineShop.Models.Products.Computers
 
             sb.AppendLine($" Components ({this.components.Count}):");
 
-            foreach (var component in this.components)
+            if (this.components.Count > 0)
             {
-                sb.AppendLine(component.ToString());
+                foreach (var component in this.components)
+                {
+                    sb.AppendLine(component.ToString());
+                }
             }
 
-            sb.AppendLine($" Peripherals ({this.peripherals.Count}); Average Overall Performance ({this.peripherals.Average(p => p.OverallPerformance)}):");
-
-            foreach (var peripheral in this.peripherals)
+            if (this.peripherals.Count > 0)
             {
-                sb.AppendLine(peripheral.ToString());
+                sb.AppendLine($" Peripherals ({this.peripherals.Count}); Average Overall Performance ({this.peripherals.Average(p => p.OverallPerformance)}):");
+
+                foreach (var peripheral in this.peripherals)
+                {
+                    sb.AppendLine(peripheral.ToString());
+                }
             }
+            else
+            {
+                sb.AppendLine("Peripherals (0); Average Overall Performance (0.00):");
+            }
+            
 
             return sb.ToString().TrimEnd();
         }
