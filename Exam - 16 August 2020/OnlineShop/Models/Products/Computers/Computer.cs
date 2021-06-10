@@ -91,7 +91,7 @@ namespace OnlineShop.Models.Products.Computers
 
             if (this.peripherals.Count > 0)
             {
-                sb.AppendLine($" Peripherals ({this.peripherals.Count}); Average Overall Performance ({this.peripherals.Average(p => p.OverallPerformance)}):");
+                sb.AppendLine($" Peripherals ({this.peripherals.Count}); Average Overall Performance ({this.peripherals.Average(p => p.OverallPerformance)}:f2):");
 
                 foreach (var peripheral in this.peripherals)
                 {
